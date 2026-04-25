@@ -1,0 +1,830 @@
+:root {
+  --bg: #f5efe2;
+  --panel: #fffaf1;
+  --text: #1f1712;
+  --muted: #6b5648;
+  --line: #d8c6b4;
+  --accent: #995328;
+  --accent-dark: #6d3617;
+  --olive: #576646;
+  --shadow: 0 18px 40px rgba(59, 36, 15, 0.08);
+  --radius-lg: 28px;
+  --radius-md: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(153, 83, 40, 0.1), transparent 32%),
+    linear-gradient(180deg, #f8f2e8 0%, var(--bg) 100%);
+  color: var(--text);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.narrow {
+  width: min(760px, 100%);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: rgba(248, 242, 232, 0.78);
+  border-bottom: 1px solid rgba(216, 198, 180, 0.8);
+}
+
+.header-inner,
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+}
+
+.brand-mark {
+  display: grid;
+  gap: 4px;
+}
+
+.brand-kicker,
+.eyebrow,
+.pr-note {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.main-nav,
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.hero-band,
+.page-hero {
+  padding: 72px 0 28px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+  gap: 28px;
+  align-items: start;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin-top: 0;
+}
+
+h1 {
+  font-family: Georgia, "Hiragino Mincho ProN", serif;
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 18px;
+}
+
+h2 {
+  font-family: Georgia, "Hiragino Mincho ProN", serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.3rem);
+  line-height: 1.18;
+}
+
+.hero-copy,
+.page-hero p,
+.soft-card p,
+.guide-card p,
+.city-card p,
+.consultation-box p,
+.editorial-panel p,
+.site-footer p {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.section-copy {
+  margin-bottom: 18px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.hero-panel,
+.soft-card,
+.guide-card,
+.city-card,
+.map-panel,
+.faq-item,
+.editorial-panel,
+.consultation-box {
+  background: rgba(255, 250, 241, 0.88);
+  border: 1px solid rgba(216, 198, 180, 0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.hero-panel,
+.editorial-panel,
+.consultation-box,
+.map-panel {
+  padding: 28px;
+}
+
+.hero-panel ul,
+.plain-list {
+  padding-left: 18px;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 24px 0 12px;
+}
+
+.situation-grid,
+.service-hub-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.situation-card,
+.service-hub-card,
+.diagnosis-result,
+.flow-card,
+.checklist-item {
+  background: rgba(255, 250, 241, 0.92);
+  border: 1px solid rgba(216, 198, 180, 0.9);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+.situation-card,
+.service-hub-card {
+  padding: 20px;
+  display: grid;
+  gap: 10px;
+  min-height: 168px;
+}
+
+.situation-icon,
+.service-hub-icon {
+  font-size: 1.5rem;
+}
+
+.situation-label,
+.service-hub-card h3 {
+  font-weight: 700;
+}
+
+.service-hub-btn,
+.result-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(153, 83, 40, 0.1);
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.diagnosis-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.diagnosis-form {
+  display: grid;
+  gap: 16px;
+}
+
+.diagnosis-group {
+  margin: 0;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 250, 241, 0.74);
+  border: 1px solid rgba(216, 198, 180, 0.9);
+}
+
+.diagnosis-group legend {
+  padding: 0;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.diagnosis-group p {
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.diagnosis-options {
+  display: grid;
+  gap: 10px;
+}
+
+.diagnosis-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(216, 198, 180, 0.9);
+  background: rgba(255, 255, 255, 0.76);
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.diagnosis-option input {
+  accent-color: var(--accent);
+}
+
+.diagnosis-option.is-active {
+  border-color: rgba(153, 83, 40, 0.45);
+  background: rgba(255, 244, 233, 0.95);
+}
+
+.diagnosis-result {
+  padding: 22px;
+}
+
+.diagnosis-route-badge {
+  display: inline-flex;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(87, 102, 70, 0.12);
+  color: var(--olive);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.diagnosis-reason {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.diagnosis-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 18px;
+}
+
+.diagnosis-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(153, 83, 40, 0.08);
+  color: var(--accent-dark);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.diagnosis-nextsteps {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: rgba(87, 102, 70, 0.08);
+  border: 1px solid rgba(87, 102, 70, 0.16);
+}
+
+.diagnosis-nextsteps strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.diagnosis-nextsteps ol {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.7;
+}
+
+.diagnosis-cta-row {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.result-links {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.primary-button,
+.ghost-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  color: #fff8f1;
+}
+
+.ghost-button {
+  border: 1px solid var(--line);
+  background: rgba(255, 250, 241, 0.68);
+}
+
+.section-block {
+  padding: 28px 0 18px;
+}
+
+.section-heading {
+  margin-bottom: 18px;
+}
+
+.diagnosis-intro-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card-grid,
+.city-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.map-panel-header {
+  margin-bottom: 18px;
+}
+
+.map-search {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.map-search-label {
+  font-weight: 700;
+}
+
+.map-search-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(216, 198, 180, 0.9);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--text);
+  font: inherit;
+}
+
+.map-search-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.map-search-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(216, 198, 180, 0.9);
+  background: rgba(255, 250, 241, 0.86);
+  color: var(--accent-dark);
+  font-weight: 700;
+}
+
+.city-map-panel {
+  display: grid;
+  gap: 18px;
+}
+
+.japan-map {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  align-items: start;
+}
+
+.japan-map-stage {
+  min-height: 720px;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 15% 14%, rgba(70, 112, 143, 0.12), transparent 18%),
+    radial-gradient(circle at 35% 55%, rgba(153, 83, 40, 0.09), transparent 22%),
+    radial-gradient(circle at 65% 82%, rgba(87, 102, 70, 0.1), transparent 18%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(246, 238, 224, 0.9));
+  border: 1px solid rgba(216, 198, 180, 0.9);
+  overflow: hidden;
+}
+
+.japan-map-svg {
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+}
+
+.japan-map-svg svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.japan-map-svg .prefecture {
+  fill: var(--prefecture-fill, #e9e0d2);
+  stroke: rgba(49, 32, 19, 0.72);
+  stroke-width: 1.6;
+  cursor: pointer;
+  transition: fill 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
+}
+
+.japan-map-svg .boundary-line {
+  stroke: rgba(49, 32, 19, 0.48);
+}
+
+.japan-map-svg .prefecture:hover,
+.japan-map-svg .prefecture:focus,
+.japan-map-svg .prefecture.is-active {
+  fill: #c56a30;
+  outline: none;
+}
+
+.japan-map-svg .prefecture.is-dimmed {
+  opacity: 0.24;
+}
+
+.map-active-card {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  min-height: 280px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 250, 241, 0.92);
+  border: 1px solid rgba(216, 198, 180, 0.9);
+  box-shadow: var(--shadow);
+}
+
+.map-active-card h3 {
+  margin-bottom: 0;
+}
+
+.map-attribution {
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.city-cluster-map {
+  position: relative;
+  min-height: 360px;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(circle at 25% 30%, rgba(153, 83, 40, 0.12), transparent 20%),
+    radial-gradient(circle at 70% 68%, rgba(87, 102, 70, 0.1), transparent 24%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(247, 239, 226, 0.94));
+  border: 1px solid rgba(216, 198, 180, 0.9);
+  overflow: hidden;
+}
+
+.city-cluster-dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: grid;
+  gap: 4px;
+  max-width: 180px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255, 250, 241, 0.96);
+  border: 1px solid rgba(153, 83, 40, 0.18);
+  box-shadow: 0 14px 28px rgba(59, 36, 15, 0.12);
+}
+
+.city-cluster-dot strong {
+  font-size: 0.92rem;
+}
+
+.city-cluster-dot span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.city-cluster-dot.current {
+  border-color: rgba(153, 83, 40, 0.6);
+  background: rgba(255, 245, 235, 0.98);
+}
+
+.city-cluster-notes {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.compact-card {
+  padding: 18px;
+}
+
+.section-actions {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.three-up {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.two-up {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.compact {
+  align-items: start;
+}
+
+.soft-card,
+.guide-card,
+.city-card,
+.faq-item {
+  padding: 22px;
+}
+
+.city-card,
+.guide-card {
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.city-card:hover,
+.guide-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(153, 83, 40, 0.55);
+}
+
+.highlight-card {
+  border-color: rgba(153, 83, 40, 0.45);
+  background: rgba(255, 246, 237, 0.96);
+}
+
+.city-badge {
+  display: inline-flex;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(87, 102, 70, 0.12);
+  color: var(--olive);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.consultation-box {
+  display: grid;
+  gap: 18px;
+}
+
+.faq-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.faq-item h3 {
+  margin-bottom: 10px;
+}
+
+.inline-cta {
+  margin-top: 24px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: rgba(153, 83, 40, 0.08);
+  border: 1px solid rgba(153, 83, 40, 0.18);
+}
+
+.compare-table-wrap {
+  overflow-x: auto;
+  margin: 16px 0 28px;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare-table th {
+  background: rgba(87, 102, 70, 0.08);
+}
+
+.flow-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.flow-card {
+  padding: 22px;
+}
+
+.flow-step,
+.checklist-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  min-height: 32px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(87, 102, 70, 0.12);
+  color: var(--olive);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.checklist-grid {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.checklist-item {
+  padding: 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.guide-section + .guide-section {
+  margin-top: 22px;
+}
+
+.site-footer {
+  margin-top: 48px;
+  border-top: 1px solid rgba(216, 198, 180, 0.85);
+}
+
+@media (max-width: 880px) {
+  .hero-grid,
+  .diagnosis-shell,
+  .diagnosis-intro-grid,
+  .situation-grid,
+  .service-hub-grid,
+  .three-up,
+  .two-up {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner,
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .japan-map {
+    grid-template-columns: 1fr;
+  }
+
+  .japan-map-stage {
+    min-height: 560px;
+  }
+
+  .city-cluster-notes {
+    grid-template-columns: 1fr;
+  }
+
+  .city-cluster-map {
+    min-height: 520px;
+  }
+
+  .city-cluster-dot {
+    max-width: 150px;
+    padding: 10px 12px;
+  }
+}
+
+/* Prefecture data stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0 28px;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+}
+
+.stat-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  margin: 8px 0 4px;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  line-height: 1.1;
+}
+
+.stat-unit {
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-left: 3px;
+  color: var(--muted);
+}
+
+.stat-note {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.strategy-block {
+  margin-top: 12px;
+  padding: 22px 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+}
+
+.strategy-block h3 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+  color: var(--accent-dark);
+}
+
+.strategy-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.strategy-list li {
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.strategy-list strong {
+  display: block;
+  color: var(--accent-dark);
+  margin-bottom: 6px;
+  font-size: 0.98rem;
+}
+
+.strategy-list p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text);
+}
