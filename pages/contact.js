@@ -1,100 +1,139 @@
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import { siteConfig } from '../data/site';
 
 export default function ContactPage() {
-  const readerSubject = encodeURIComponent('家じまいガイドへのお問い合わせ');
-  const readerBody = encodeURIComponent(
-    [
-      'お問い合わせ種別：',
-      'お名前：',
-      'ご連絡先：',
-      'ご相談内容：',
-      '',
-      '媒体掲載・提携のご相談の場合は、会社名とご希望内容もご記入ください。'
-    ].join('\n')
-  );
-  const partnerSubject = encodeURIComponent('家じまいガイド 媒体掲載・提携相談');
-  const partnerBody = encodeURIComponent(
-    [
-      '会社名：',
-      'ご担当者名：',
-      'ご相談種別：媒体掲載 / 提携 / 取材 / その他',
-      'ご希望の掲載先：',
-      '想定商材・サービス：',
-      '報酬形態：',
-      'ご希望開始時期：',
-      '補足：'
-    ].join('\n')
-  );
+  const [status, setStatus] = useState('idle');
+  const [error, setError] = useState('');
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+    setError('');
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      name: fd.get('name'),
+      email: fd.get('email'),
+      type: fd.get('type'),
+      message: fd.get('message'),
+      website: fd.get('website'),
+    };
+    try {
+      const r = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        throw new Error(j.error || '送信に失敗しました');
+      }
+      e.target.reset();
+      setStatus('sent');
+    } catch (err) {
+      setStatus('error');
+      setError(err.message || '送信に失敗しました');
+    }
+  };
 
   return (
     <Layout
       title="お問い合わせ | 家じまいガイド"
-      description="家じまいガイドへのご相談、媒体掲載、提携に関するお問い合わせページです。"
+      description="家じまいガイドへのご相談、サイト売却・媒体掲載・提携に関するお問い合わせフォーム。通常2営業日以内に返信します。"
       canonical={`${siteConfig.domain}/contact`}
     >
       <section className="page-hero">
         <div className="container narrow">
-          <p className="eyebrow">Contact</p>
+          <p className="eyebrow">CONTACT</p>
           <h1>お問い合わせ</h1>
           <p>
-            記事内容に関するご連絡、媒体掲載、提携のご相談は下記からお送りください。
-            相談内容に応じて確認のうえ返信します。提携相談は、掲載位置や導線の希望が分かると早いです。
+            記事内容のご質問、不動産売却サービスの媒体掲載・提携、
+            <strong>サイトごとの売却・買収のご相談</strong>まで承ります。
+            下記フォームからお送りください。通常2営業日以内に、ご記入いただいたメールアドレス宛に返信します。
           </p>
         </div>
       </section>
 
       <section className="container section-block">
-        <div className="card-grid two-up">
-          <article className="soft-card">
-            <h2>読者向けのご相談</h2>
-            <p>
-              相続した実家、空き家、親名義の家、共有名義、売却前の片付けなど、
-              記事内容に関するご連絡はこちらからお送りください。
-            </p>
-            <div className="inline-cta">
-              <strong>連絡先</strong>
+        {status === 'sent' && (
+          <div className="contact-thanks">
+            <strong>送信ありがとうございました。</strong>
+            <p>内容を確認のうえ、ご記入いただいたメールアドレスから返信します。</p>
+          </div>
+        )}
+        <div className="contact-grid">
+          <article className="contact-form-card">
+            <h2>お問い合わせフォーム</h2>
+            <form onSubmit={onSubmit} className="contact-form" noValidate>
+              <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }} />
+              <label className="form-label">
+                <span>お名前 / 会社名 <em>必須</em></span>
+                <input type="text" name="name" required placeholder="例: 山田 太郎 / 株式会社○○" />
+              </label>
+              <label className="form-label">
+                <span>メールアドレス <em>必須</em></span>
+                <input type="email" name="email" required placeholder="返信先のメールアドレス" />
+              </label>
+              <label className="form-label">
+                <span>ご相談の種類 <em>必須</em></span>
+                <select name="type" required defaultValue="">
+                  <option value="" disabled>選択してください</option>
+                  <option>記事内容について</option>
+                  <option>媒体掲載・タイアップ提携</option>
+                  <option>サイトの売却・買収相談</option>
+                  <option>取材・メディア連携</option>
+                  <option>その他</option>
+                </select>
+              </label>
+              <label className="form-label">
+                <span>ご相談内容 <em>必須</em></span>
+                <textarea
+                  name="message"
+                  required
+                  rows={8}
+                  placeholder="ご相談内容を具体的にお書きください。&#10;媒体掲載の場合: 商材、希望する掲載位置、報酬形態 など&#10;サイト売却の場合: 想定金額、取引方法 など"
+                />
+              </label>
+              <button type="submit" className="primary-button form-submit" disabled={status === 'sending'}>
+                {status === 'sending' ? '送信中…' : '送信する'}
+              </button>
+              {status === 'error' && (
+                <p className="form-note" style={{ color: '#b03a2e' }}>
+                  送信に失敗しました: {error}。少し時間を置いて再度お試しください。
+                </p>
+              )}
+              <p className="form-note">
+                * ご記入いただいたメールアドレス宛に、通常2営業日以内に返信します。
+              </p>
+            </form>
+          </article>
+
+          <aside className="contact-side">
+            <div className="contact-info-card">
+              <h3>サイト売却・買収のご相談</h3>
               <p>
-                <a href={`mailto:${siteConfig.contactEmail}?subject=${readerSubject}&body=${readerBody}`}>
-                  {siteConfig.contactEmail}
-                </a>
+                家じまいガイドは <strong>5,000ページ以上の地域別コンテンツ</strong> + 47都道府県の地価・空き家データを抱える独立メディアです。
+                M&A・サイトM&A・編集権のみの譲渡など、目的に応じた条件をお伺いします。
               </p>
             </div>
-          </article>
 
-          <article className="soft-card">
-            <h2>媒体掲載・提携のご相談</h2>
-            <p>
-              不動産売却、相続、司法書士、解体、遺品整理、空き家管理など、
-              関連サービスの媒体掲載や提携のご相談も受け付けています。
-            </p>
-            <ul className="plain-list">
-              <li>独自ドメインで継続運営している媒体です</li>
-              <li>地域別ページ、比較ページ、診断ページを持っています</li>
-              <li>検索意図に合わせて掲載位置や文脈を分けて調整します</li>
-            </ul>
-            <div className="section-actions">
-              <a className="primary-button" href={`mailto:${siteConfig.contactEmail}?subject=${partnerSubject}&body=${partnerBody}`}>
-                提携相談を送る
-              </a>
-              <a className="ghost-button" href={`mailto:${siteConfig.contactEmail}?subject=${readerSubject}&body=${readerBody}`}>
-                一般問い合わせを送る
-              </a>
+            <div className="contact-info-card">
+              <h3>媒体掲載・提携</h3>
+              <p>
+                不動産売却・相続・解体・遺品整理・空き家管理など、家じまい文脈にフィットするサービスは積極的に掲載・タイアップ可能です。
+                掲載位置・導線・報酬形態を相談できます。
+              </p>
             </div>
-          </article>
-        </div>
-      </section>
 
-      <section className="container section-block">
-        <article className="editorial-panel">
-          <h2>提携相談で書いてもらえると早いこと</h2>
-          <ul className="plain-list">
-            <li>どのページに置きたいか</li>
-            <li>資料請求、相談予約、比較表、診断結果などの希望導線</li>
-            <li>想定している商材や訴求したい読者層</li>
-            <li>報酬形態、審査状況、開始希望時期</li>
-          </ul>
-        </article>
+            <div className="contact-info-card">
+              <h3>記事内容のご質問</h3>
+              <p>
+                個別の不動産売却に関する判断は税理士・司法書士・宅建業者へのご相談を推奨しています。
+                記事の事実関係や追加情報のご指摘は歓迎します。
+              </p>
+            </div>
+          </aside>
+        </div>
       </section>
     </Layout>
   );

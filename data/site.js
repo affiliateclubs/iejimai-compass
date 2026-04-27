@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: '家じまいガイド',
   domain: 'https://iejimaiguide.com',
-  contactEmail: 'affiliateclubs@gmail.com',
+  contactEmail: 'contact@iejimaiguide.com',
   title: '家じまいガイド | 相続した実家・空き家の売却と整理を地域別にわかりやすく',
   description:
     '相続した実家や空き家をどう売るか迷う人向けの地域別売却ガイドです。不動産売却、相続登記、税金、空き家対策、買取と仲介の違いまで整理します。',

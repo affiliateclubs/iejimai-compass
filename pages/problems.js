@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Layout from '../components/Layout';
 import { problemGuides } from '../data/articles';
 import { siteConfig } from '../data/site';
+import { imageForSlug } from '../lib/postImages';
 
 export default function ProblemsPage() {
   return (
@@ -20,15 +21,23 @@ export default function ProblemsPage() {
       <section className="container section-block">
         <div className="card-grid three-up">
           {problemGuides.map((guide) => (
-            <Link key={guide.slug} href={`/guide/${guide.slug}`} className="guide-card">
-              <h2>{guide.h1}</h2>
-              <p>{guide.description}</p>
-              <span>続きを読む</span>
+            <Link key={guide.slug} href={`/guide/${guide.slug}`} className="guide-card with-img">
+              <div className="card-img" style={{ backgroundImage: `url(${imageForSlug(guide.slug)})` }} />
+              <div className="card-body">
+                <h2>{guide.h1}</h2>
+                <p>{guide.description}</p>
+                <span>続きを読む →</span>
+              </div>
             </Link>
           ))}
         </div>
       </section>
+      <style jsx>{`
+        .guide-card.with-img { padding: 0 !important; overflow: hidden; }
+        .card-img { width: 100%; height: 168px; background-size: cover; background-position: center; background-color: #efebe1; transition: transform 0.4s; }
+        .guide-card:hover .card-img { transform: scale(1.04); }
+        .card-body { padding: 24px 24px 22px; }
+      `}</style>
     </Layout>
   );
 }
-
