@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Layout from '../../../../components/Layout';
+import ServicePathCards from '../../../../components/ServicePathCards';
 import { comparePages, getSolutionPages } from '../../../../data/articles';
 import {
   getCity,
@@ -92,6 +93,84 @@ const citySolutionTemplates = {
       '放置1年と売却時の手残りを並べて比較する'
     ],
     angle: '放置コスト'
+  }),
+  'souzoku-touki': (prefecture, city) => ({
+    slug: 'souzoku-touki',
+    title: `${city.name}で相続登記が終わっていない家を売るには`,
+    description: `${prefecture.name}${city.name}で親名義の家や相続登記前の実家を売るときの、名義整理と売却準備の順番をまとめます。`,
+    h1: `${city.name}で相続登記が終わっていない家を売るには`,
+    intro: `${city.name}で親名義の家を売りたい場合、査定前に名義と相続人の同意で止まることがあります。価格の話に入る前に、誰が売主になれるか、必要書類をどう集めるかを整理しておくと動きやすくなります。`,
+    bullets: [
+      '登記事項証明書で現在の名義を確認する',
+      '相続人の人数と同意が必要な範囲を整理する',
+      '司法書士相談と査定相談を並行して進める'
+    ],
+    angle: '相続登記'
+  }),
+  'zanchiutsu-katazuke': (prefecture, city) => ({
+    slug: 'zanchiutsu-katazuke',
+    title: `${city.name}で残置物が多い実家を片付けて売る流れ`,
+    description: `${prefecture.name}${city.name}で荷物や遺品が残った家を売る前に、片付ける範囲と売却ルートをどう分けるかを整理します。`,
+    h1: `${city.name}で残置物が多い実家を片付けて売る流れ`,
+    intro: `${city.name}で家財が多い実家を売るときは、全部片付けてから動くより、売り方に必要な片付けだけを先に決めるほうが現実的です。仲介、買取、解体前提で必要な片付け量は変わります。`,
+    bullets: [
+      '権利書・通帳・写真など残す物を先に分ける',
+      '仲介で見せる部屋だけ先に整える',
+      '買取や解体前提なら残置物対応込みで比較する'
+    ],
+    angle: '残置物整理'
+  }),
+  'kaitai-sarachi': (prefecture, city) => ({
+    slug: 'kaitai-sarachi',
+    title: `${city.name}で古い家を解体して土地として売る判断`,
+    description: `${prefecture.name}${city.name}で築古の実家を解体するか、古家付き土地として売るか迷う人向けの判断ページです。`,
+    h1: `${city.name}で古い家を解体して土地として売る判断`,
+    intro: `${city.name}で築古の家を売る場合、解体してから売るほうが良いとは限りません。解体費、買主の需要、空き家特例、買取価格を並べてから決めるほうが失敗しにくくなります。`,
+    bullets: [
+      '解体費の概算を先に取る',
+      '古家付き土地で売る場合の査定も同時に見る',
+      '空き家の3,000万円特別控除の要件を確認する'
+    ],
+    angle: '解体して売る'
+  }),
+  'reform-before-sale': (prefecture, city) => ({
+    slug: 'reform-before-sale',
+    title: `${city.name}で実家を直してから売るべきか`,
+    description: `${prefecture.name}${city.name}で古い家を売る前に、リフォーム・屋根外壁修繕をするべきかを判断するページです。`,
+    h1: `${city.name}で実家を直してから売るべきか`,
+    intro: `${city.name}で実家を売る前に直すべきか迷ったら、先に査定と修繕見積もりを並べてください。見た目の改善が売値に効く家もありますが、費用を回収しにくい工事もあります。`,
+    bullets: [
+      '雨漏りや外壁劣化など致命的な点だけ確認する',
+      'フルリフォーム前に査定額の上限を聞く',
+      '修繕費をかける場合とかけない場合の手残りを比べる'
+    ],
+    angle: '修繕判断'
+  }),
+  'zeikin-3000man': (prefecture, city) => ({
+    slug: 'zeikin-3000man',
+    title: `${city.name}で空き家の3,000万円特別控除を確認する`,
+    description: `${prefecture.name}${city.name}で相続空き家を売る前に、3,000万円特別控除の確認ポイントと注意点を整理します。`,
+    h1: `${city.name}で空き家の3,000万円特別控除を確認する`,
+    intro: `${city.name}で相続した空き家を売るなら、3,000万円特別控除の対象になるかで手残りが大きく変わることがあります。売却前に、居住状況、耐震、解体、期限を確認しておくことが大切です。`,
+    bullets: [
+      '被相続人が住んでいた家か確認する',
+      '売却期限と耐震・解体条件を確認する',
+      '税務署や税理士に早めに相談する'
+    ],
+    angle: '税金確認'
+  }),
+  'akiya-kanri': (prefecture, city) => ({
+    slug: 'akiya-kanri',
+    title: `${city.name}で遠方の空き家を管理しながら売るには`,
+    description: `${prefecture.name}${city.name}にある実家を遠方から管理しながら売るときの、現地確認・片付け・売却相談の進め方です。`,
+    h1: `${city.name}で遠方の空き家を管理しながら売るには`,
+    intro: `${city.name}にある実家を遠方から管理している場合、現地に行く回数を減らしながら売却準備を進める設計が必要です。管理、片付け、査定を別々に動かすと負担が増えるため、最初に順番を決めるのが有効です。`,
+    bullets: [
+      '郵便物・草木・近隣連絡の窓口を決める',
+      '現地確認と片付け見積もりを同じ日に寄せる',
+      '売却期限を決めて管理コストを増やしすぎない'
+    ],
+    angle: '遠方管理'
   })
 };
 
@@ -173,6 +252,12 @@ export default function CitySolutionPage({ page, prefecture, city, relatedCities
           </div>
         </article>
       </section>
+
+      <ServicePathCards
+        title={`${city.name}で${page.angle}を進める前に比較したいサービス`}
+        lead={`${page.angle}の判断は、費用感を見ないまま決めると手残りがズレやすくなります。片付け・解体・修繕の見積もりを先に押さえて、売却ルートと一緒に比べます。`}
+        variant={page.slug}
+      />
 
       <section className="container section-block">
         <div className="section-heading">

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import CityClusterMap from '../../components/CityClusterMap';
 import Layout from '../../components/Layout';
+import ServicePathCards from '../../components/ServicePathCards';
 import { comparePages, getSolutionPages } from '../../data/articles';
 import {
   getCity,
@@ -123,6 +124,12 @@ export default function CityPage({ city, prefecture, relatedCities }) {
         </article>
       </section>
 
+      <ServicePathCards
+        title={`${city.name}の家じまいで先に比較したいサービス`}
+        lead={`${city.name}で売るか残すかを決める前に、片付け・解体・不用品処分の費用感を押さえると、仲介と買取の判断がしやすくなります。`}
+        variant="city"
+      />
+
       <section className="container section-block">
         <div className="section-heading">
           <p className="eyebrow">City solutions</p>
@@ -134,7 +141,10 @@ export default function CityPage({ city, prefecture, relatedCities }) {
             { slug: 'akiya-baikyaku', label: '空き家', heading: `${city.name}で空き家を売るには` },
             { slug: 'hayaku-uritai', label: '早く売る', heading: `${city.name}で家を早く売りたいときの進め方` },
             { slug: 'ikkatsu-satei', label: '一括査定比較', heading: `${city.name}の家を売るときの一括査定サービス比較` },
-            { slug: 'kaitori-hikaku', label: '買取比較', heading: `${city.name}で買取業者を比較する方法` }
+            { slug: 'kaitori-hikaku', label: '買取比較', heading: `${city.name}で買取業者を比較する方法` },
+            { slug: 'houchi-risk', label: '放置コスト', heading: `${city.name}で空き家を放置した場合のコストとリスク` },
+            { slug: 'zanchiutsu-katazuke', label: '残置物整理', heading: `${city.name}で残置物が多い実家を片付けて売る流れ` },
+            { slug: 'kaitai-sarachi', label: '解体して売る', heading: `${city.name}で古い家を解体して土地として売る判断` }
           ].map((entry) => (
             <Link
               key={entry.slug}

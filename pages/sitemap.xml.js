@@ -46,7 +46,13 @@ function buildUrls() {
     'hayaku-uritai',
     'ikkatsu-satei',
     'kaitori-hikaku',
-    'houchi-risk'
+    'houchi-risk',
+    'souzoku-touki',
+    'zanchiutsu-katazuke',
+    'kaitai-sarachi',
+    'reform-before-sale',
+    'zeikin-3000man',
+    'akiya-kanri'
   ];
   const citySolutionUrls = prefectures.flatMap((prefecture) =>
     getCitiesByPrefecture(prefecture.slug).flatMap((city) =>
