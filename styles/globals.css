@@ -1128,6 +1128,43 @@ h3 {
   font-size: 0.9rem;
 }
 
+.footer-related-media {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-related-label {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.footer-related-media a {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid rgba(180, 141, 59, 0.65);
+}
+
+.footer-related-media strong {
+  color: #ffffff;
+  font-size: 0.94rem;
+}
+
+.footer-related-media span {
+  color: #aebcca;
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
 .footer-links a {
   color: #b8c4d2;
   text-decoration: none;
