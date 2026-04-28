@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Layout from '../../../../components/Layout';
+import NextStepHub from '../../../../components/NextStepHub';
 import ServicePathCards from '../../../../components/ServicePathCards';
 import { comparePages, getSolutionPages } from '../../../../data/articles';
 import {
@@ -252,6 +253,11 @@ export default function CitySolutionPage({ page, prefecture, city, relatedCities
           </div>
         </article>
       </section>
+
+      <NextStepHub
+        title={`${city.name}で${page.angle}の次に見るページ`}
+        lead={`${page.angle}だけで判断せず、診断、売り方比較、相談先比較をはさんでから見積もり導線へ進むと、問い合わせの意図が明確になります。`}
+      />
 
       <ServicePathCards
         title={`${city.name}で${page.angle}を進める前に比較したいサービス`}

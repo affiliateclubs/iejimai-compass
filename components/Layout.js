@@ -65,15 +65,6 @@ export default function Layout({
               </div>
             </div>
             <div className="footer-links">
-              <div className="footer-related-media">
-                <p className="footer-related-label">関連メディア</p>
-                {siteConfig.relatedMedia.map((media) => (
-                  <a key={media.href} href={media.href}>
-                    <strong>{media.label}</strong>
-                    <span>{media.description}</span>
-                  </a>
-                ))}
-              </div>
               <Link href="/diagnosis">家じまい進め方診断</Link>
               <Link href="/problems">困りごと別ガイド</Link>
               <Link href="/checklist">売却前チェックリスト</Link>

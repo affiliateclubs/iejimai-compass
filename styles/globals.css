@@ -725,6 +725,21 @@ h3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.four-up {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.next-step-hub {
+  padding: 28px;
+  border: 1px solid rgba(180, 141, 59, 0.28);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 250, 242, 0.96), rgba(243, 239, 230, 0.82));
+}
+
+.next-step-card {
+  min-height: 220px;
+}
+
 .two-up {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -869,6 +884,7 @@ h3 {
   .situation-grid,
   .service-hub-grid,
   .three-up,
+  .four-up,
   .two-up {
     grid-template-columns: 1fr;
   }
@@ -1126,43 +1142,6 @@ h3 {
   grid-template-columns: repeat(2, 1fr);
   gap: 14px 28px;
   font-size: 0.9rem;
-}
-
-.footer-related-media {
-  grid-column: 1 / -1;
-  display: grid;
-  gap: 10px;
-  margin-bottom: 12px;
-  padding-bottom: 22px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.footer-related-label {
-  margin: 0;
-  color: var(--gold);
-  font-size: 0.78rem;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-}
-
-.footer-related-media a {
-  display: grid;
-  gap: 4px;
-  padding: 12px 14px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 2px solid rgba(180, 141, 59, 0.65);
-}
-
-.footer-related-media strong {
-  color: #ffffff;
-  font-size: 0.94rem;
-}
-
-.footer-related-media span {
-  color: #aebcca;
-  font-size: 0.82rem;
-  line-height: 1.55;
 }
 
 .footer-links a {

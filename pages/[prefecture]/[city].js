@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import CityClusterMap from '../../components/CityClusterMap';
 import Layout from '../../components/Layout';
+import NextStepHub from '../../components/NextStepHub';
 import ServicePathCards from '../../components/ServicePathCards';
 import { comparePages, getSolutionPages } from '../../data/articles';
 import {
@@ -123,6 +124,11 @@ export default function CityPage({ city, prefecture, relatedCities }) {
           </ul>
         </article>
       </section>
+
+      <NextStepHub
+        title={`${city.name}で次に見るページ`}
+        lead={`${city.name}の地域情報を確認したら、診断、売り方比較、相談先比較の順に進むと、広告リンクへ飛ぶ前の判断材料がそろいます。`}
+      />
 
       <ServicePathCards
         title={`${city.name}の家じまいで先に比較したいサービス`}

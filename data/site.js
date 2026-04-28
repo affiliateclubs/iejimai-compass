@@ -39,22 +39,5 @@ export const siteConfig = {
       label: '国土地理院 地理院地図',
       href: 'https://maps.gsi.go.jp/'
     }
-  ],
-  relatedMedia: [
-    {
-      href: 'https://norinavi.net/',
-      label: 'のりナビ',
-      description: '相続後の固定費、NISA、証券口座、家計整理を考えるときに役立つお金のメディア'
-    },
-    {
-      href: 'https://taisyokunavi.com/',
-      label: '退職ナビ',
-      description: '介護離職、退職代行、職場の限界を感じたときの進め方を整理するメディア'
-    },
-    {
-      href: 'https://atsuwari.vercel.app/',
-      label: 'アツワリ',
-      description: '家族や親族で予定・費用・連絡を整理するときに使える共有調整ツール'
-    }
   ]
 };

@@ -33,7 +33,7 @@ export default function ServicePathCards({
   if (programs.length === 0) return null;
 
   return (
-    <section className="container section-block">
+    <section id="service-path-cards" className="container section-block">
       <div className="section-heading">
         <p className="eyebrow">Next action</p>
         <h2>{title}</h2>
